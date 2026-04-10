@@ -1,0 +1,21 @@
+{
+  "name": "projeto-ifc",
+  "version": "1.0.0",
+  "description": "Projeto web básico do IFC",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server .",
+    "dev": "live-server . --open",
+    "build": "echo 'Build script placeholder'"
+  },
+  "keywords": [
+    "javascript",
+    "web",
+    "ifc"
+  ],
+  "author": "Alessandro",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
