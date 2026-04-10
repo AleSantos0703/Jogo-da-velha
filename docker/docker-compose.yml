@@ -15,6 +15,6 @@ services:
       dockerfile: docker/Dockerfile.backend
     ports:
       - "3000:3000"
-    volumes:
-      - ../backend:/app/backend
+    # volumes:
+    #   - ../backend:/app/backend
     restart: unless-stopped
