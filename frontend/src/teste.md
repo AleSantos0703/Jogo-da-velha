@@ -1,0 +1,1 @@
+Arquivo de exemplo movido para o frontend.
