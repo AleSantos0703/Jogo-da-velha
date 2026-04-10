@@ -1,17 +1,13 @@
+// Arquivo principal JavaScript do Frontend
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Projeto IFC carregado com sucesso!');
-    
-    initProject();
+    console.log('Frontend Projeto IFC carregado com sucesso!');
+    initFrontend();
 });
-
-function initProject() {
-    console.log('Inicializando projeto...');
-    
+function initFrontend() {
     const container = document.querySelector('.container');
     if (container) {
         container.addEventListener('click', function() {
-            alert('Projeto funcionando!');
+            alert('Frontend funcionando!');
         });
     }
 }
-
