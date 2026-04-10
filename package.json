@@ -6,7 +6,8 @@
   "scripts": {
     "start": "live-server .",
     "dev": "live-server . --open",
-    "build": "echo 'Build script placeholder'"
+    "build": "echo 'Build script placeholder'",
+    "docker": "docker compose -f docker/docker-compose.yml up --build"
   },
   "keywords": [
     "javascript",
