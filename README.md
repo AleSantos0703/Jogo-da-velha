@@ -1,14 +1,15 @@
-﻿# Jogo da Velha – Dupla XX
+﻿# Jogo da Velha – Grupo (Cremilson,Rafa, Alessandro)
 
 ## Integrantes
-
+| Nome | Matrícula | GitHub |
+|------|-----------|--------|
 | cremilson | 2023009691 | @crezin |
 | rafael  | 2024009266 | @RafaelHenriqueReichardt|
-| Alexandro | 2026XXX | @AleSantos0703 |
+| Alexandro | 2024007780 | @AleSantos0703 |
 
 ## Descrição do projeto
 
-Jogo da Velha é um jogo clássico para dois jogadores, onde o objetivo é alinhar três símbolos iguais em uma grade 3x3. Este projeto implementa uma versão web do jogo, permitindo jogar localmente ou online, resolvendo a necessidade de entretenimento simples e acessível.
+Jogo da Velha é um jogo clássico para dois jogadores, onde o objetivo é alinhar três símbolos iguais em uma grade 3x3. Este projeto implementa uma versão web do jogo, permitindo jogar localmente , resolvendo a necessidade de entretenimento simples e acessível.
 
 ## Tecnologias utilizadas
 
@@ -17,6 +18,9 @@ Jogo da Velha é um jogo clássico para dois jogadores, onde o objetivo é alinh
 • Node.js
 • Express.js
 • Docker
+• VsCode
+• git/github
+
 
 ## Como executar o projeto
 
@@ -55,10 +59,11 @@ docker/
 
 ## Histórico de entregas
 
-| E1 | Definição do projeto | — | ⏳ |
-| E2 | Modelagem | — | ⏳ |
-| E3 | Backend + BD | — | ⏳ |
-| E4 | Interface integrada | — | ⏳ |
-| E5 | Projeto final | — | ⏳ |
-
+| Etapa | Descrição                |data | Status |
+|------|-------------------------|------------|--------|
+| E1   | Definição do projeto    | 13/04    | ✅   |
+| E2   | Modelagem               |     13/04  | ✅  |
+| E3   | Backend + BD            |      - | 🔄 |
+| E4   | Interface integrada     | —          | ⏳     |
+| E5   | Projeto final           | —          | ⏳     |
 > ⏳ Pendente | ✅ Concluído | 🔄 Em andamento
