@@ -6,7 +6,7 @@ Este documento explica, passo a passo, como subir o projeto e como contribuir co
 
 - Node.js 20+
 - npm
-- Docker e Docker Compose (recomendado para ambiente padrao)
+- Docker Desktop com engine Linux ativo (recomendado para ambiente padrao)
 - Git
 
 ## 2. Clonar e preparar
@@ -33,13 +33,13 @@ cd ..
 1. Primeira vez (ou apos mudar Dockerfile/dependencias):
 
 ```bash
-docker-compose up --build -d
+docker compose up --build -d
 ```
 
 2. Subidas seguintes:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 3. Acessos:
@@ -49,19 +49,19 @@ docker-compose up -d
 4. Ver status:
 
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 5. Ver logs:
 
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
 
 6. Derrubar stack:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Opcao B: Local (sem Docker)
@@ -171,3 +171,24 @@ Troque mapeamento no docker-compose.yml ou pare o processo que ocupa a porta.
 ### Erro de compose sem arquivo
 
 Execute comandos de Docker sempre na raiz do projeto, onde esta o arquivo docker-compose.yml.
+
+### Erro no Windows: failed to connect to npipe dockerDesktopLinuxEngine
+
+Esse erro indica que o daemon do Docker nao esta disponivel.
+
+Passos para corrigir:
+1. Abra o Docker Desktop e aguarde Engine running.
+2. Garanta que o ambiente esta em Linux containers.
+3. Valide no terminal:
+
+```bash
+docker version
+docker info
+docker compose version
+```
+
+4. Tente novamente:
+
+```bash
+docker compose up --build -d
+```

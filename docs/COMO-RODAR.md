@@ -9,7 +9,7 @@ Para fluxo de contribuicao (branch, commit, PR e checklist), consulte `CONTRIBUT
 ## 1. Pre-requisitos
 
 - Node.js 20+ e npm
-- Docker e Docker Compose (para o modo Docker)
+- Docker Desktop com engine Linux ativo (para o modo Docker)
 
 ## 2. Subir com Docker (recomendado)
 
@@ -17,7 +17,7 @@ Na raiz do projeto, execute:
 
 ```bash
 cd /home/alessandro/Projeto-IFC
-docker-compose up --build -d
+docker compose up --build -d
 ```
 
 Acesso dos servicos:
@@ -27,19 +27,19 @@ Acesso dos servicos:
 Ver status dos containers:
 
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 Ver logs:
 
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
 
 Parar os servicos:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ## 3. Subir sem Docker (modo local)
@@ -101,6 +101,36 @@ ss -ltnp | grep -E ':8081|:3001|:8080|:3000'
 Como resolver:
 - Pare o processo que esta usando a porta, ou
 - Altere o mapeamento de porta em `docker-compose.yml`.
+
+### Erro no Windows: failed to connect to npipe dockerDesktopLinuxEngine
+
+Mensagem comum:
+- unable to get image ... failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine
+
+Causa:
+- Docker Desktop nao esta iniciado, ou
+- Docker Desktop esta em Windows containers em vez de Linux containers.
+
+Correcao passo a passo:
+1. Abrir o Docker Desktop.
+2. Esperar o status Engine running.
+3. No menu do Docker Desktop, usar Switch to Linux containers (se aparecer essa opcao).
+4. Confirmar no terminal:
+
+```bash
+docker version
+docker info
+docker compose version
+```
+
+5. Subir o projeto novamente na raiz:
+
+```bash
+docker compose up --build -d
+```
+
+Observacao:
+- O aviso sobre version no docker-compose.yml era apenas de compatibilidade e foi removido deste repositorio.
 
 ## 5. Observacao importante sobre o frontend
 
