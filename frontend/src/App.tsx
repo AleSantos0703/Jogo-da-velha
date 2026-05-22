@@ -6,9 +6,6 @@ import RegisterPage from "./pages/RegisterPage";
 import PublicLayout from "./layouts/PublicLayout";
 import RequireAuth from "./layouts/RequireAuth";
 
-
-
-
 export default function App() {
   return (
     <Routes>
@@ -26,5 +23,4 @@ export default function App() {
       </Route>
     </Routes>
   );
-//
 }
