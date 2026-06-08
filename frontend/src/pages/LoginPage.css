@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d1f;
+}
+
+.login-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 20% 10%, #1f1f45 0%, transparent 38%),
+    radial-gradient(circle at 80% 90%, #171735 0%, transparent 42%),
+    linear-gradient(180deg, #0f0f25 0%, #0d0d1f 100%);
+  font-family: 'Press Start 2P', monospace;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.6) 2px,
+    rgba(0, 0, 0, 0.6) 4px
+  );
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  border: 4px solid #5555ff;
+  background: #0a0a1d;
+  box-shadow: 0 0 0 4px #11112b, 8px 8px 0 #080816;
+  padding: 24px 22px 16px;
+}
+
+.pixel-board {
+  margin: 0 auto 12px;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3, 38px);
+  border: 2px solid #5555ff;
+}
+
+.pixel-cell {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #23236c;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+.title {
+  text-align: center;
+  color: #ffcc00;
+  font-size: clamp(11px, 2.8vw, 14px);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px #a56e00;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 9px;
+  margin-bottom: 18px;
+  font-size: 8px;
+  color: #6d6dcf;
+}
+
+.login-form {
+  display: grid;
+  gap: 10px;
+}
+
+.field-label {
+  color: #88a3ff;
+  font-size: 7px;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.inp-pixel {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  background: #060614;
+  border: none;
+  border-bottom: 3px solid #333388;
+  border-right: 3px solid #333388;
+  color: #66ffcc;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  letter-spacing: 1px;
+  caret-color: #66ffcc;
+  transition: border-color 0.1s;
+}
+.inp-pixel::placeholder { color: #1e1e44; }
+.inp-pixel:focus { border-color: #6666ff; }
+
+.remember-row {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  color: #a9a9ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.remember-box {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #5555aa;
+  display: grid;
+  place-items: center;
+  color: #66ffcc;
+  font-size: 9px;
+}
+
+.board-pulse { animation: pulse-border 3s ease-in-out infinite; }
+@keyframes pulse-border {
+  0%,100% { border-color: #5555ff; }
+  50%     { border-color: #aaaaff; }
+}
+
+.blink { animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+.shake { animation: shake 0.3s; }
+@keyframes shake {
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-4px);}
+  75%{transform:translateX(4px);}
+}
+
+.btn-pixel {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  background: #1a1a88;
+  border: none;
+  border-bottom: 4px solid #0a0a44;
+  border-right: 4px solid #0a0a44;
+  color: #fff;
+  padding: 14px;
+  width: 100%;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: background 0.1s;
+}
+.btn-pixel:hover { background: #2222aa; }
+.btn-pixel:active {
+  transform: translate(2px, 2px);
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+.btn-pixel:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.msg {
+  margin-top: 2px;
+  text-align: center;
+  font-size: 7px;
+  min-height: 12px;
+}
+
+.msg.ok { color: #66ffcc; }
+.msg.err { color: #ff6666; }
+
+.register-row {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 6px;
+  color: #9393c9;
+}
+
+.link-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  color: #ffcc00;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.link-btn:hover { color: #ffee88; }
+
+.status-row {
+  margin-top: 10px;
+  border-top: 1px solid #2c2c66;
+  padding-top: 8px;
+  color: #6a6ac0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  font-size: 7px;
+}

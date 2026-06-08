@@ -1,4 +1,38 @@
 services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: jogo_velha
+      MYSQL_USER: ifc_user
+      MYSQL_PASSWORD: ifc_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "ifc_user", "-pifc_pass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "3001:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: ifc_user
+      DB_PASSWORD: ifc_pass
+      DB_NAME: jogo_velha
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
   frontend:
     build:
       context: .
@@ -7,10 +41,5 @@ services:
       - "8081:80"
     restart: unless-stopped
 
-  backend:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.backend
-    ports:
-      - "3001:3000"
-    restart: unless-stopped
+volumes:
+  db_data:
