@@ -5,8 +5,13 @@ import MenuPage from "./pages/MenuPage";
 import RegisterPage from "./pages/RegisterPage";
 import PublicLayout from "./layouts/PublicLayout";
 import RequireAuth from "./layouts/RequireAuth";
+import { useEffect } from "react";
+import { useAuthStore } from "./store/useAuthStore";
 
 export default function App() {
+  const fetchMe = useAuthStore((s) => s.fetchMe);
+  useEffect(() => { fetchMe(); }, [fetchMe]);
+
   return (
     <Routes>
       {/* ── Rotas públicas ──────────────────────────────────────── */}

@@ -4,7 +4,16 @@ const { runMigrations } = require('./data/connection_db');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
+
+// Mount auth controller if present
+try {
+  const authController = require('./controllers/authController');
+  app.use('/api/auth', authController);
+} catch (e) {
+  console.warn('Auth controller not found:', e.message);
+}
 
 app.get('/', (req, res) => {
   res.send('Backend rodando com sucesso!');
