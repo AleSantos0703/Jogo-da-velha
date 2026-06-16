@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthStore } from "../store/useAuthStore";
+import { useIsAuthenticated } from "../store/useAuthStore";
 
 export default function RequireAuth() {
-  const { isAuthenticated } = useAuthStore();
+  const isAuthenticated = useIsAuthenticated();
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 }
