@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+=======
+const express = require('express');
+>>>>>>> 37042e4 (criado migração do banco)
 const { runMigrations } = require('./data/connection_db');
 
 const app = express();
@@ -21,6 +25,7 @@ app.get('/', (req, res) => {
   res.send('Backend rodando com sucesso!');
 });
 
+<<<<<<< HEAD
 (async () => {
   try {
     await runMigrations();
@@ -34,3 +39,15 @@ app.get('/', (req, res) => {
     console.log(`Servidor backend ouvindo na porta ${PORT}`);
   });
 })();
+=======
+runMigrations()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Servidor backend ouvindo na porta ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Falha ao executar migrations:', err);
+    process.exit(1);
+  });
+>>>>>>> 37042e4 (criado migração do banco)
