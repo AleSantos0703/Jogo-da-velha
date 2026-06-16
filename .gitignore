@@ -34,4 +34,4 @@ Thumbs.db
 .cache/
 
 # TypeScript incremental build
-*.tsbuildinfo
+*.tsbuildinfo\n# local backend env\nbackend/.env
