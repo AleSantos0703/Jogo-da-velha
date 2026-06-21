@@ -34,5 +34,9 @@ Thumbs.db
 .cache/
 
 # TypeScript incremental build
+<<<<<<< HEAD
 *.tsbuildinfo
 # local backend env\nbackend/.env
+=======
+*.tsbuildinfo\n# local backend env\nbackend/.env
+>>>>>>> agents/backend-folder-analysis-for-frontend

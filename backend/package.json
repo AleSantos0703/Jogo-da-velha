@@ -11,15 +11,19 @@
     "express": "^4.18.4",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "mysql2": "^3.9.0"
 =======
 =======
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
     "cors": "^2.8.5",
     "bcrypt": "^5.1.0",
     "jsonwebtoken": "^9.0.0",
     "dotenv": "^16.0.0",
     "pg": "^8.10.0"
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> be688451becc132643a00a7170817e2dd5153dee
 =======
@@ -27,5 +31,7 @@
     "mysql2": "^3.9.0"
 >>>>>>> 37042e4 (criado migração do banco)
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
   }
 }

@@ -1,14 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const express = require('express');
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 =======
 const express = require('express');
+<<<<<<< HEAD
 >>>>>>> 37042e4 (criado migração do banco)
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> BackendFase01
+>>>>>>> agents/backend-folder-analysis-for-frontend
 const { runMigrations } = require('./data/connection_db');
 
 const app = express();
@@ -30,6 +37,7 @@ app.get('/', (req, res) => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 runMigrations()
   .then(() => {
     app.listen(PORT, () => {
@@ -42,6 +50,8 @@ runMigrations()
   });
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
 (async () => {
   try {
     await runMigrations();
@@ -66,5 +76,9 @@ runMigrations()
     console.error('Falha ao executar migrations:', err);
     process.exit(1);
   });
+<<<<<<< HEAD
 >>>>>>> 37042e4 (criado migração do banco)
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> BackendFase01
+>>>>>>> agents/backend-folder-analysis-for-frontend

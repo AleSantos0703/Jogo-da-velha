@@ -1,10 +1,24 @@
 -- =============================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+-- Jogo da Velha IFC — Migration inicial (PostgreSQL)
+-- =============================================================
+
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  senha VARCHAR(255) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
 -- Jogo da Velha IFC — Migration inicial
 -- Executa CREATE TABLE IF NOT EXISTS para ser idempotente
 -- =============================================================
 
 CREATE TABLE IF NOT EXISTS users (
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 -- Jogo da Velha IFC — Migration inicial (PostgreSQL)
@@ -23,24 +37,33 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS users (
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
   id          INT           AUTO_INCREMENT PRIMARY KEY,
   nome        VARCHAR(100)  NOT NULL,
   email       VARCHAR(255)  NOT NULL UNIQUE,
   senha       VARCHAR(255)  NOT NULL,
   created_at  TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 37042e4 (criado migração do banco)
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> BackendFase01
+>>>>>>> agents/backend-folder-analysis-for-frontend
 );
 
 -- partidas: cada registro é uma sessão de jogo
 -- token é o código único enviado via WhatsApp
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- tabuleiro guarda o estado atual como JSON: ["X","","O","X","","","","",""]
 CREATE TABLE IF NOT EXISTS partidas (
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
 -- tabuleiro guarda o estado atual como JSON
 CREATE TABLE IF NOT EXISTS partidas (
   id SERIAL PRIMARY KEY,
@@ -55,7 +78,10 @@ CREATE TABLE IF NOT EXISTS partidas (
 =======
 -- tabuleiro guarda o estado atual como JSON: ["X","","O","X","","","","",""]
 CREATE TABLE IF NOT EXISTS partidas (
+<<<<<<< HEAD
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> agents/backend-folder-analysis-for-frontend
   id           INT      AUTO_INCREMENT PRIMARY KEY,
   token        VARCHAR(64)   NOT NULL UNIQUE,
   jogador1_id  INT           NOT NULL,
@@ -66,14 +92,19 @@ CREATE TABLE IF NOT EXISTS partidas (
   created_at   TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
   finished_at  TIMESTAMP     NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 37042e4 (criado migração do banco)
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> BackendFase01
+>>>>>>> agents/backend-folder-analysis-for-frontend
   FOREIGN KEY (jogador1_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (jogador2_id) REFERENCES users(id) ON DELETE SET NULL,
   FOREIGN KEY (vencedor_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 -- estatisticas: uma linha por usuário, atualizada ao fim de cada partida
 -- pontuacao = wins*3 + draws (coluna gerada automaticamente pelo MySQL)
@@ -94,6 +125,21 @@ CREATE TABLE IF NOT EXISTS estatisticas (
 -- pontuacao = wins*3 + draws (coluna gerada automaticamente pelo MySQL)
 CREATE TABLE IF NOT EXISTS estatisticas (
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+-- estatisticas: uma linha por usuário
+CREATE TABLE IF NOT EXISTS estatisticas (
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL UNIQUE,
+  partidas_ganhas INT NOT NULL DEFAULT 0,
+  partidas_perdidas INT NOT NULL DEFAULT 0,
+  empates INT NOT NULL DEFAULT 0,
+  pontuacao INT GENERATED ALWAYS AS (partidas_ganhas * 3 + empates) STORED,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+=======
+-- estatisticas: uma linha por usuário, atualizada ao fim de cada partida
+-- pontuacao = wins*3 + draws (coluna gerada automaticamente pelo MySQL)
+CREATE TABLE IF NOT EXISTS estatisticas (
+>>>>>>> agents/backend-folder-analysis-for-frontend
   id                 INT       AUTO_INCREMENT PRIMARY KEY,
   user_id            INT       NOT NULL UNIQUE,
   partidas_ganhas    INT       NOT NULL DEFAULT 0,
@@ -102,8 +148,12 @@ CREATE TABLE IF NOT EXISTS estatisticas (
   pontuacao          INT       GENERATED ALWAYS AS (partidas_ganhas * 3 + empates) STORED,
   updated_at         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 37042e4 (criado migração do banco)
 >>>>>>> 948049873f3447cdf39448fb00ea87e577214768
+=======
+>>>>>>> BackendFase01
+>>>>>>> agents/backend-folder-analysis-for-frontend
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
