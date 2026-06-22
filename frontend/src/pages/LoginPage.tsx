@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthStore, useIsAuthenticated } from "../store/useAuthStore";
 import "./LoginPage.css";
 
@@ -11,6 +11,8 @@ const CELLS = [
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: { pathname: string; search: string } })?.from;
   const login = useAuthStore((s) => s.login);
   const clearError = useAuthStore((s) => s.clearError);
   const authStatus = useAuthStore((s) => s.status);
@@ -24,7 +26,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/menu", { replace: true });
+      navigate(from ? `${from.pathname}${from.search}` : "/menu", { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -55,7 +57,7 @@ export default function LoginPage() {
     try {
       await login({ email, password: senha });
       setMsg({ texto: "LOGIN REALIZADO", tipo: "ok" });
-      navigate("/menu", { replace: true });
+      navigate(from ? `${from.pathname}${from.search}` : "/menu", { replace: true });
     } catch (error) {
       setMsg({
         texto: error instanceof Error ? error.message.toUpperCase() : "ERRO NO LOGIN",
