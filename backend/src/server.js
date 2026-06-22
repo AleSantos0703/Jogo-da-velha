@@ -1,15 +1,31 @@
 const express = require('express');
 const { runMigrations } = require('./data/connection_db');
+const authRoutes    = require('./routes/auth');
+const matchRoutes   = require('./routes/matches');
+const rankingRoutes = require('./routes/ranking');
 
-const app = express();
+const app  = express();
 const PORT = process.env.PORT || 3000;
+
+// ── CORS ─────────────────────────────────────────────────────
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  next();
+});
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Backend rodando com sucesso!');
-});
+// ── Rotas ────────────────────────────────────────────────────
+app.get('/', (req, res) => res.json({ status: 'ok', message: 'Backend rodando!' }));
 
+app.use('/auth',    authRoutes);
+app.use('/matches', matchRoutes);
+app.use('/ranking', rankingRoutes);
+
+// ── Inicialização ────────────────────────────────────────────
 runMigrations()
   .then(() => {
     app.listen(PORT, () => {
