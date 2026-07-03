@@ -1,69 +1,98 @@
-﻿# Jogo da Velha – Grupo (Cremilson,Rafa, Alessandro)
+# Jogo da Velha Multiplayer
+
+Aplicação web de Jogo da Velha para dois jogadores em tempo real. Um jogador cria a partida, compartilha o link de convite e o segundo jogador entra pelo link — sem precisar estar na mesma rede.
 
 ## Integrantes
+
 | Nome | Matrícula | GitHub |
-|------|-----------|--------|
-| cremilson | 2023009691 | @crezin |
-| rafael  | 2024009266 | @RafaelHenriqueReichardt|
-| Alexandro | 2024007780 | @AleSantos0703 |
+|---|---|---|
+| Cremilson | 2023009691 | @crezin |
+| Rafael | 2024009266 | @RafaelHenriqueReichardt |
+| Alessandro | 2024007780 | @AleSantos0703 |
 
-## Descrição do projeto
+## Tecnologias
 
-Jogo da Velha é um jogo clássico para dois jogadores, onde o objetivo é alinhar três símbolos iguais em uma grade 3x3. Este projeto implementa uma versão web do jogo, permitindo jogar localmente , resolvendo a necessidade de entretenimento simples e acessível.
+| Camada | Tecnologia |
+|---|---|
+| Frontend | React 18 + TypeScript + Vite |
+| Backend | Node.js + Express |
+| Banco de dados | MySQL 8.0 |
+| Autenticação | JWT + bcrypt |
+| Infraestrutura | Docker + Docker Compose + Nginx |
 
-## Tecnologias utilizadas
+## Como subir o projeto
 
-• JavaScript (ES6+)
-• HTML5 / CSS3
-• Node.js
-• Express.js
-• Docker
-• VsCode
-• git/github
+### Com Docker (recomendado)
 
+Necessário ter [Docker](https://www.docker.com/) instalado.
 
-## Como executar o projeto
-
+```bash
 # Clone o repositório
 git clone <url do repositório>
+cd Projeto-IFC
 
-# Acesse a pasta do projeto
-cd JogoDaVelha
+# Sobe os 3 containers (banco, backend, frontend)
+docker-compose up --build -d
+```
 
-# Instale as dependências
+Acesse em: **http://localhost:8081**
+
+Para parar:
+```bash
+docker-compose down
+```
+
+---
+
+### Sem Docker (desenvolvimento local)
+
+Necessário ter Node.js e MySQL instalados.
+
+**Backend:**
+```bash
+cd backend
 npm install
+npm run dev
+# roda em http://localhost:3000
+```
 
-# Execute
-npm start
+**Frontend** (em outro terminal):
+```bash
+cd frontend
+npm install
+npm run dev
+# roda em http://localhost:5173
+```
 
-## Estrutura de pastas
+## Estrutura do projeto
 
 ```
-frontend/
-  ├── index.html
-  ├── assets/
-  │   ├── css/
-  │   │   └── style.css
-  │   ├── js/
-  │   │   └── main.js
-  │   ├── fonts/
-  │   └── img/
-backend/
-  ├── src/
-  │   └── server.js
-docker/
-  ├── docker-compose.yml
-  ├── Dockerfile.backend
-  └── Dockerfile.frontend
+Projeto-IFC/
+├── backend/
+│   └── src/
+│       ├── server.js         # ponto de entrada
+│       ├── data/             # banco de dados e migrations
+│       ├── middleware/       # autenticação JWT
+│       ├── routes/           # endpoints da API
+│       └── utils/            # lógica do jogo
+├── frontend/
+│   └── src/
+│       ├── pages/            # telas do app
+│       ├── layouts/          # proteção de rotas
+│       ├── store/            # estado global (Zustand)
+│       └── lib/              # comunicação com o backend
+├── docker/                   # Dockerfiles e configuração Nginx
+└── docker-compose.yml        # orquestração dos containers
 ```
 
 ## Histórico de entregas
 
-| Etapa | Descrição                |data | Status |
-|------|-------------------------|------------|--------|
-| E1   | Definição do projeto    | 13/04    | ✅   |
-| E2   | Modelagem               |     13/04  | ✅  |
-| E3   | Backend + BD            |      - | 🔄 |
-| E4   | Interface integrada     | —          | ⏳     |
-| E5   | Projeto final           | —          | ⏳     |
-> ⏳ Pendente | ✅ Concluído | 🔄 Em andamento
+| Etapa | Descrição | Data | Status |
+|---|---|---|---|
+| E1 | Definição do projeto | 13/04 | ✅ |
+| E2 | Modelagem | 13/04 | ✅ |
+| E3 | Backend + BD | — | ✅ |
+| E4 | Interface integrada | — | ✅ |
+| E5 | Projeto final | — | 🔄 |
+
+> ✅ Concluído | 🔄 Em andamento | ⏳ Pendente
