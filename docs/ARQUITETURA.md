@@ -113,6 +113,8 @@ Não usa WebSockets — o polling é suficiente para um jogo de turnos.
 
 ## Banco de dados
 
+![Diagrama do banco de dados](diagrama_banco.png)
+
 Três tabelas principais:
 
 | Tabela | Guarda |
